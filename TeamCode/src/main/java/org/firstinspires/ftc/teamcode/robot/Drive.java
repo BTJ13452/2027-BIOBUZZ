@@ -21,7 +21,7 @@ public class Drive {
 
     double heading;
 
-    boolean isFildoOn;
+    boolean isFieldoOn;
 
     public Drive(HardwareMap hardwareMap, double heading, boolean isFildoOn) {
         motorFrontLeft = hardwareMap.dcMotor.get("Front left");
@@ -46,7 +46,7 @@ public class Drive {
                 RevHubOrientationOnRobot.UsbFacingDirection.UP)));
         resetIMU();
 
-        this.isFildoOn = isFildoOn;
+        this.isFieldoOn = isFildoOn;
 
         this.heading = (heading / 180) * Math.PI;
     }
@@ -55,7 +55,7 @@ public class Drive {
         r *= ROTATION_SENSITIVITY;
 
 
-        if (isFildoOn) {
+        if (isFieldoOn) {
             double botHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS) + heading;
 
             double rotX = x * Math.cos(-botHeading) - y * Math.sin(-botHeading);
@@ -82,15 +82,15 @@ public class Drive {
         heading = 0;
     }
 
-    public void cancelFildo() {
-        isFildoOn = false;
+    public void cancelFieldo() {
+        isFieldoOn = false;
     }
 
-    public void activateFildo() {
-        isFildoOn = true;
+    public void activateFieldo() {
+        isFieldoOn = true;
     }
 
     public boolean isFildoOn() {
-        return isFildoOn;
+        return isFieldoOn;
     }
 }
