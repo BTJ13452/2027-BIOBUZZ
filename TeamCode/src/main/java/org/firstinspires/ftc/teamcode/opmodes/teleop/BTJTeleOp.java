@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.opmodes.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.robot.Drive;
+import org.firstinspires.ftc.teamcode.robot.Intake;
 
 public class BTJTeleOp extends OpMode {
 
@@ -10,11 +11,13 @@ public class BTJTeleOp extends OpMode {
     final boolean START_FIELDO = false;
 
     Drive drive;
+    Intake intake;
 
 
     @Override
     public void init() {
         drive = new Drive(hardwareMap, START_HEADING, START_FIELDO);
+        intake = new Intake(hardwareMap);
     }
 
     @Override
@@ -27,5 +30,14 @@ public class BTJTeleOp extends OpMode {
             else
                 drive.activateFieldo();
         }
+
+
+        if (gamepad1.xWasPressed()) {
+            if (intake.isActive())
+                intake.deactivate();
+            else
+                intake.activate();
+        }
+
     }
 }
