@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -10,7 +10,20 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class Drive {
 
+
+
     final double ROTATION_SENSITIVITY = 1;
+
+    final String FRONT_LEFT_WHEEL_NAME = "Front left";
+    final String FRONT_RIGHT_WHEEL_NAME = "Front right";
+    final String BACK_LEFT_WHEEL_NAME = "Back left";
+    final String BACK_RIGHT_WHEEL_NAME = "Back right";
+
+    final Direction FRONT_LEFT_WHEEL_DIRECTION = Direction.FORWARD;
+    final Direction FRONT_RIGHT_WHEEL_DIRECTION = Direction.REVERSE;
+    final Direction BACK_LEFT_WHEEL_DIRECTION = Direction.FORWARD;
+    final Direction BACK_RIGHT_WHEEL_DIRECTION = Direction.REVERSE;
+
 
     IMU imu;
 
@@ -24,15 +37,15 @@ public class Drive {
     boolean isFieldoOn;
 
     public Drive(HardwareMap hardwareMap, double heading, boolean isFildoOn) {
-        motorFrontLeft = hardwareMap.dcMotor.get("Front left");
-        motorFrontRight = hardwareMap.dcMotor.get("Front right");
-        motorBackLeft = hardwareMap.dcMotor.get("Back left");
-        motorBackRight = hardwareMap.dcMotor.get("Back right");
+        motorFrontLeft = hardwareMap.dcMotor.get(FRONT_LEFT_WHEEL_NAME);
+        motorFrontRight = hardwareMap.dcMotor.get(FRONT_RIGHT_WHEEL_NAME);
+        motorBackLeft = hardwareMap.dcMotor.get(BACK_LEFT_WHEEL_NAME);
+        motorBackRight = hardwareMap.dcMotor.get(BACK_RIGHT_WHEEL_NAME);
 
-        motorFrontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        motorBackLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorFrontLeft.setDirection(FRONT_LEFT_WHEEL_DIRECTION);
+        motorFrontRight.setDirection(FRONT_RIGHT_WHEEL_DIRECTION);
+        motorBackLeft.setDirection(BACK_LEFT_WHEEL_DIRECTION);
+        motorBackRight.setDirection(BACK_RIGHT_WHEEL_DIRECTION);
 
         motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -82,7 +95,7 @@ public class Drive {
         heading = 0;
     }
 
-    public void cancelFieldo() {
+    public void deactivateFieldo() {
         isFieldoOn = false;
     }
 

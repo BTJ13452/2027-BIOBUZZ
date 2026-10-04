@@ -26,7 +26,7 @@ public class BTJTeleOp extends OpMode {
 
         if (gamepad1.rightStickButtonWasPressed()) {
             if (drive.isFildoOn())
-                drive.cancelFieldo();
+                drive.deactivateFieldo();
             else
                 drive.activateFieldo();
         }
