@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Shooter{
+public class Shooter implements BasicSystem{
     final String MOTOR1_NAME = "";
     final String MOTOR2_NAME = "";
     final Direction MOTOR1_DIRECTION = Direction.REVERSE;
@@ -24,15 +24,26 @@ public class Shooter{
         motor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
+    @Override
     public void activate() {
         motor1.setPower(MOTORS_POWER);
         motor2.setPower(MOTORS_POWER);
     }
 
+
+    @Override
     public void deactivate() {
         motor1.setPower(0);
         motor2.setPower(0);
     }
+
+    @Override
+    public void eStop() {
+        motor1.setPower(0);
+        motor2.setPower(0);
+    }
+
+    @Override
     public boolean isActive() {
         return motor1.getPower() != 0;
     }
