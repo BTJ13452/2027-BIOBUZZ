@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode.opmodes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.robot.BTJRobot;
 import org.firstinspires.ftc.teamcode.robot.Drive;
 import org.firstinspires.ftc.teamcode.robot.Intake;
 import org.firstinspires.ftc.teamcode.robot.Shooter;
@@ -9,44 +11,41 @@ import org.firstinspires.ftc.teamcode.robot.Shooter;
 public class BTJTeleOp extends OpMode {
 
     final int START_HEADING = 0;
-    final boolean START_FIELDO = false;
 
-    Drive drive;
-    Intake intake;
-    Shooter shooter;
+    BTJRobot robot;
+
 
 
     @Override
     public void init() {
-        drive = new Drive(hardwareMap, START_HEADING, START_FIELDO);
-        intake = new Intake(hardwareMap);
+        robot = new BTJRobot(hardwareMap, START_HEADING);
     }
 
     @Override
     public void loop() {
-        drive.drive(gamepad1.right_stick_x, -gamepad1.right_stick_y, gamepad1.left_stick_x);
+        robot.drive.drive(gamepad1.right_stick_x, -gamepad1.right_stick_y, gamepad1.left_stick_x);
 
         if (gamepad1.rightStickButtonWasPressed()) {
-            if (drive.isFildoOn())
-                drive.deactivateFieldo();
+            if (robot.drive.isFildoOn())
+                robot.drive.deactivateFieldo();
             else
-                drive.activateFieldo();
+                robot.drive.activateFieldo();
         }
 
 
         if (gamepad1.xWasPressed()) {
-            if (intake.isActive())
-                intake.deactivate();
+            if (robot.intake.isActive())
+                robot.intake.deactivate();
             else
-                intake.activate();
+                robot.intake.activate();
         }
 
 
         if (gamepad1.bWasPressed()){
-            if (shooter.isActive())
-                shooter.deactivate();
+            if (robot.shooter.isActive())
+                robot.shooter.deactivate();
             else
-                shooter.activate();
+                robot.shooter.activate();
         }
 
     }
