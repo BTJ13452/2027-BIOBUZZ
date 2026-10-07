@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Intake {
+public class Intake implements BasicSystem{
 
     final String MOTOR_NAME = "";
     final Direction MOTOR_DIRECTION = Direction.REVERSE;
@@ -22,14 +22,22 @@ public class Intake {
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
+    @Override
     public void activate() {
         motor.setPower(MOTOR_POWER);
     }
 
+    @Override
     public void deactivate() {
         motor.setPower(0);
     }
 
+    @Override
+    public void eStop() {
+        motor.setPower(0);
+    }
+
+    @Override
     public boolean isActive() {
         return Math.abs(MOTOR_POWER - motor.getPower()) < 1e-9;
     }
