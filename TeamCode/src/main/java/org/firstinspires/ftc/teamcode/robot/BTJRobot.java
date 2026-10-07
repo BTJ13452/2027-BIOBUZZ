@@ -10,12 +10,10 @@ public class BTJRobot {
     public Shooter shooter;
 
     public BTJRobot(HardwareMap hardwareMap, double startHeading){
-        drive = new Drive(hardwareMap, startHeading, START_FIELDO);
+        drive = new RegularDrive(hardwareMap, startHeading, START_FIELDO);
         intake = new Intake(hardwareMap);
         shooter = new Shooter(hardwareMap);
     }
-
-
 
 
 }

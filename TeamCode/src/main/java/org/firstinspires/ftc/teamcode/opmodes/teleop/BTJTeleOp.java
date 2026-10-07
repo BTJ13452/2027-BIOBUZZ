@@ -1,12 +1,8 @@
 package org.firstinspires.ftc.teamcode.opmodes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.robot.BTJRobot;
-import org.firstinspires.ftc.teamcode.robot.Drive;
-import org.firstinspires.ftc.teamcode.robot.Intake;
-import org.firstinspires.ftc.teamcode.robot.Shooter;
 
 public class BTJTeleOp extends OpMode {
 
