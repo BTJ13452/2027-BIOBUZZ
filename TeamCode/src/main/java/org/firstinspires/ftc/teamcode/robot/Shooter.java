@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Shoter {
+public class Shooter{
     final String MOTOR1_NAME = "";
     final String MOTOR2_NAME = "";
     final Direction MOTOR1_DIRECTION = Direction.REVERSE;
@@ -13,7 +13,7 @@ public class Shoter {
     DcMotor motor1;
     DcMotor motor2;
 
-    public Shoter(HardwareMap hardwareMap) {
+    public Shooter(HardwareMap hardwareMap) {
         motor1 = hardwareMap.dcMotor.get(MOTOR1_NAME);
         motor2 = hardwareMap.dcMotor.get(MOTOR2_NAME);
 

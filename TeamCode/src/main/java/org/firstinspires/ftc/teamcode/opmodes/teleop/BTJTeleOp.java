@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.robot.Drive;
 import org.firstinspires.ftc.teamcode.robot.Intake;
-import org.firstinspires.ftc.teamcode.robot.Shoter;
+import org.firstinspires.ftc.teamcode.robot.Shooter;
 
 public class BTJTeleOp extends OpMode {
 
@@ -13,7 +13,7 @@ public class BTJTeleOp extends OpMode {
 
     Drive drive;
     Intake intake;
-    Shoter shoter;
+    Shooter shooter;
 
 
     @Override
@@ -43,10 +43,10 @@ public class BTJTeleOp extends OpMode {
 
 
         if (gamepad1.bWasPressed()){
-            if (shoter.isActive())
-                shoter.deactivate();
+            if (shooter.isActive())
+                shooter.deactivate();
             else
-                shoter.activate();
+                shooter.activate();
         }
 
     }
