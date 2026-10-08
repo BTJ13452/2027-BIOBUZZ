@@ -13,7 +13,7 @@ public class Intake implements BasicSystem{
     DcMotor motor;
 
     public Intake(HardwareMap hardwareMap) {
-        motor = hardwareMap.dcMotor.get(BTJconfigorasion.MOTOR_NAME);
+        motor = hardwareMap.dcMotor.get(BTJConfiguration.MOTOR_NAME);
 
         motor.setDirection(BTJDirections.MOTOR_DIRECTION);
 

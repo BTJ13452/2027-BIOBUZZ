@@ -21,10 +21,10 @@ public class RegularDrive extends Drive {
 
 
     public RegularDrive(HardwareMap hardwareMap, double heading, boolean isFildoOn) {
-        motorFrontLeft = hardwareMap.dcMotor.get(BTJconfigorasion.FRONT_LEFT_WHEEL_NAME);
-        motorFrontRight = hardwareMap.dcMotor.get(BTJconfigorasion.FRONT_RIGHT_WHEEL_NAME);
-        motorBackLeft = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_LEFT_WHEEL_NAME);
-        motorBackRight = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_RIGHT_WHEEL_NAME);
+        motorFrontLeft = hardwareMap.dcMotor.get(BTJConfiguration.FRONT_LEFT_WHEEL_NAME);
+        motorFrontRight = hardwareMap.dcMotor.get(BTJConfiguration.FRONT_RIGHT_WHEEL_NAME);
+        motorBackLeft = hardwareMap.dcMotor.get(BTJConfiguration.BACK_LEFT_WHEEL_NAME);
+        motorBackRight = hardwareMap.dcMotor.get(BTJConfiguration.BACK_RIGHT_WHEEL_NAME);
 
         motorFrontLeft.setDirection(BTJDirections.FRONT_LEFT_WHEEL_DIRECTION);
         motorFrontRight.setDirection(BTJDirections.FRONT_RIGHT_WHEEL_DIRECTION);
