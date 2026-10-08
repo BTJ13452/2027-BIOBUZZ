@@ -16,8 +16,8 @@ public class Shooter implements BasicSystem{
         motor1 = hardwareMap.dcMotor.get(BTJConfiguration.SHOOTER_MOTOR1_NAME);
         motor2 = hardwareMap.dcMotor.get(BTJConfiguration.SHOOTER_MOTOR2_NAME);
 
-        motor1.setDirection(BTJDirections.MOTOR1_DIRECTION);
-        motor2.setDirection(BTJDirections.MOTOR2_DIRECTION);
+        motor1.setDirection(BTJDirections.SHOOTER_MOTOR1_DIRECTION);
+        motor2.setDirection(BTJDirections.SHOOTER_MOTOR2_DIRECTION);
 
         motor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

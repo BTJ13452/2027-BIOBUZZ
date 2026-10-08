@@ -10,8 +10,8 @@ public class BTJDirections {
     public static final DcMotorEx.Direction BACK_LEFT_WHEEL_DIRECTION = DcMotorSimple.Direction.FORWARD;
     public static final DcMotorEx.Direction BACK_RIGHT_WHEEL_DIRECTION = DcMotorSimple.Direction.REVERSE;
 
-    public static final DcMotorEx.Direction MOTOR_DIRECTION = DcMotorSimple.Direction.REVERSE;
-    public static final DcMotorEx.Direction MOTOR1_DIRECTION = DcMotorSimple.Direction.REVERSE;
-    public static final DcMotorSimple.Direction MOTOR2_DIRECTION = DcMotorSimple.Direction.FORWARD;
+    public static final DcMotorEx.Direction INTAKE_MOTOR_DIRECTION = DcMotorSimple.Direction.REVERSE;
+    public static final DcMotorEx.Direction SHOOTER_MOTOR1_DIRECTION = DcMotorSimple.Direction.REVERSE;
+    public static final DcMotorSimple.Direction SHOOTER_MOTOR2_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
 }

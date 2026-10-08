@@ -18,7 +18,7 @@ public class Intake implements BasicSystem{
     public Intake(HardwareMap hardwareMap) {
         motor = hardwareMap.dcMotor.get(BTJConfiguration.INTAKE_MOTOR_NAME);
 
-        motor.setDirection(BTJDirections.MOTOR_DIRECTION);
+        motor.setDirection(BTJDirections.INTAKE_MOTOR_DIRECTION);
 
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
