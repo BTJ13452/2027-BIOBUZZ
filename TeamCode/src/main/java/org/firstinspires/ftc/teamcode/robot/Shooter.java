@@ -13,8 +13,8 @@ public class Shooter implements BasicSystem{
     DcMotor motor2;
 
     public Shooter(HardwareMap hardwareMap) {
-        motor1 = hardwareMap.dcMotor.get(BTJConfiguration.MOTOR1_NAME);
-        motor2 = hardwareMap.dcMotor.get(BTJConfiguration.MOTOR2_NAME);
+        motor1 = hardwareMap.dcMotor.get(BTJConfiguration.SHOOTER_MOTOR1_NAME);
+        motor2 = hardwareMap.dcMotor.get(BTJConfiguration.SHOOTER_MOTOR2_NAME);
 
         motor1.setDirection(BTJDirections.MOTOR1_DIRECTION);
         motor2.setDirection(BTJDirections.MOTOR2_DIRECTION);

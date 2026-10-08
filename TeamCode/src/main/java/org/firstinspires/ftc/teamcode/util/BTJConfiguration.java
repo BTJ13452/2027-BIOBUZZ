@@ -6,12 +6,12 @@ public class BTJConfiguration {
      public static final String BACK_LEFT_WHEEL_NAME = "Back left";
      public static final  String BACK_RIGHT_WHEEL_NAME = "Back right";
 
-     public static final String MOTOR_NAME = "";
+     public static final String INTAKE_MOTOR_NAME = "";
 
 
-    public static final String MOTOR1_NAME = "";
+    public static final String SHOOTER_MOTOR1_NAME = "";
 
-     public static final String MOTOR2_NAME = "";
+     public static final String SHOOTER_MOTOR2_NAME = "";
 
 }
 
