@@ -11,8 +11,8 @@ public class BTJRobot {
 
     public BTJRobot(HardwareMap hardwareMap, double startHeading){
         drive = new RegularDrive(hardwareMap, startHeading, START_FIELDO);
-        intake = new Intake(hardwareMap);
-        shooter = new Shooter(hardwareMap);
+//        intake = new Intake(hardwareMap);
+//        shooter = new Shooter(hardwareMap);
     }
 
 
