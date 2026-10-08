@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.robot;
+package org.firstinspires.ftc.teamcode.util;
 
 public class BTJConfiguration {
      public static final String FRONT_LEFT_WHEEL_NAME = "Front left";
