@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.opmodes.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.robot.BTJRobot;
 
+@TeleOp
 public class BTJTeleOp extends OpMode {
 
     final int START_HEADING = 0;
@@ -19,7 +21,7 @@ public class BTJTeleOp extends OpMode {
 
     @Override
     public void loop() {
-        robot.drive.drive(gamepad1.right_stick_x, -gamepad1.right_stick_y, gamepad1.left_stick_x);
+        robot.drive.drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
         if (gamepad1.rightStickButtonWasPressed()) {
             if (robot.drive.isFildoOn())
