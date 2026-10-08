@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.robot;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Intake implements BasicSystem{
@@ -16,7 +15,7 @@ public class Intake implements BasicSystem{
     public Intake(HardwareMap hardwareMap) {
         motor = hardwareMap.dcMotor.get(BTJconfigorasion.MOTOR_NAME);
 
-        motor.setDirection(BTJ_directions.MOTOR_DIRECTION);
+        motor.setDirection(BTJDirections.MOTOR_DIRECTION);
 
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }

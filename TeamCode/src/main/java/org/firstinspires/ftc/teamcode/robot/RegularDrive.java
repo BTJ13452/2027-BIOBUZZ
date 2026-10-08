@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -27,10 +26,10 @@ public class RegularDrive extends Drive {
         motorBackLeft = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_LEFT_WHEEL_NAME);
         motorBackRight = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_RIGHT_WHEEL_NAME);
 
-        motorFrontLeft.setDirection(BTJ_directions.FRONT_LEFT_WHEEL_DIRECTION);
-        motorFrontRight.setDirection(BTJ_directions.FRONT_RIGHT_WHEEL_DIRECTION);
-        motorBackLeft.setDirection(BTJ_directions.BACK_LEFT_WHEEL_DIRECTION);
-        motorBackRight.setDirection(BTJ_directions.BACK_RIGHT_WHEEL_DIRECTION);
+        motorFrontLeft.setDirection(BTJDirections.FRONT_LEFT_WHEEL_DIRECTION);
+        motorFrontRight.setDirection(BTJDirections.FRONT_RIGHT_WHEEL_DIRECTION);
+        motorBackLeft.setDirection(BTJDirections.BACK_LEFT_WHEEL_DIRECTION);
+        motorBackRight.setDirection(BTJDirections.BACK_RIGHT_WHEEL_DIRECTION);
 
         motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
