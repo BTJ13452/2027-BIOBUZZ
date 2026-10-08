@@ -27,10 +27,10 @@ public class RegularDrive extends Drive {
         motorBackLeft = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_LEFT_WHEEL_NAME);
         motorBackRight = hardwareMap.dcMotor.get(BTJconfigorasion.BACK_RIGHT_WHEEL_NAME);
 
-        motorFrontLeft.setDirection(FRONT_LEFT_WHEEL_DIRECTION);
-        motorFrontRight.setDirection(FRONT_RIGHT_WHEEL_DIRECTION);
-        motorBackLeft.setDirection(BACK_LEFT_WHEEL_DIRECTION);
-        motorBackRight.setDirection(BACK_RIGHT_WHEEL_DIRECTION);
+        motorFrontLeft.setDirection(BTJ_directions.FRONT_LEFT_WHEEL_DIRECTION);
+        motorFrontRight.setDirection(BTJ_directions.FRONT_RIGHT_WHEEL_DIRECTION);
+        motorBackLeft.setDirection(BTJ_directions.BACK_LEFT_WHEEL_DIRECTION);
+        motorBackRight.setDirection(BTJ_directions.BACK_RIGHT_WHEEL_DIRECTION);
 
         motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

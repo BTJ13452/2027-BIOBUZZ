@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Intake implements BasicSystem{
 
-    final Direction MOTOR_DIRECTION = Direction.REVERSE;
+
     final double MOTOR_POWER = 1;
 
 
@@ -16,7 +16,7 @@ public class Intake implements BasicSystem{
     public Intake(HardwareMap hardwareMap) {
         motor = hardwareMap.dcMotor.get(BTJconfigorasion.MOTOR_NAME);
 
-        motor.setDirection(MOTOR_DIRECTION);
+        motor.setDirection(BTJ_directions.MOTOR_DIRECTION);
 
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
