@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Shooter implements BasicSystem{
-    final String MOTOR1_NAME = "";
-    final String MOTOR2_NAME = "";
     final Direction MOTOR1_DIRECTION = Direction.REVERSE;
     final Direction MOTOR2_DIRECTION = Direction.FORWARD;
     final double MOTORS_POWER = 1;
@@ -14,8 +12,8 @@ public class Shooter implements BasicSystem{
     DcMotor motor2;
 
     public Shooter(HardwareMap hardwareMap) {
-        motor1 = hardwareMap.dcMotor.get(MOTOR1_NAME);
-        motor2 = hardwareMap.dcMotor.get(MOTOR2_NAME);
+        motor1 = hardwareMap.dcMotor.get(BTJconfigorasion.MOTOR1_NAME);
+        motor2 = hardwareMap.dcMotor.get(BTJconfigorasion.MOTOR2_NAME);
 
         motor1.setDirection(MOTOR1_DIRECTION);
         motor2.setDirection(MOTOR2_DIRECTION);
