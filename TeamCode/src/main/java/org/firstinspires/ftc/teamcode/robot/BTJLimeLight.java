@@ -43,7 +43,7 @@ public class BTJLimeLight {
     public static double getAngele() {
         if (llResult != null) {
             llResult = limelight.getLatestResult();
-            llResult.getTx();
+            return llResult.getTx();
         }
         return 0;
     }
