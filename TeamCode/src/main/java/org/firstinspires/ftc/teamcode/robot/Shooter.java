@@ -11,10 +11,14 @@ import org.firstinspires.ftc.teamcode.util.BTJPID;
 public class Shooter implements BasicSystem{
 
     final double MOTORS_POWER = 1;
-    public static double kp = 80;
-    public static double kd = -5;
+    final double firstNumber = 2000;
+    final double secondNumber = 1;
+    public static double kp = 1;
+    public static double kd = 0;
     public static double ki = 0;
-    public static double kf = 14.5;
+    public static double kf = 0;
+    public static double ta ;
+
     DcMotorEx motor1;
     DcMotorEx motor2;
 
@@ -39,6 +43,10 @@ public class Shooter implements BasicSystem{
         motor1.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER,new PIDFCoefficients());
         motor2.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER,new PIDFCoefficients());
 
+    }
+
+    public double shooterByDistance(){
+        return firstNumber * Math.pow(secondNumber,BTJLimeLight.getDistance());
 
     }
     @Override

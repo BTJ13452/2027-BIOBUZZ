@@ -1,10 +1,10 @@
 package org.firstinspires.ftc.teamcode.robot;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
+
+import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 
 public class BTJLimeLight {
 
@@ -13,7 +13,7 @@ public class BTJLimeLight {
 
 
     public BTJLimeLight(HardwareMap hardwareMap) {
-        limelight = hardwareMap.get(Limelight3A.class, "limelight");
+        limelight = hardwareMap.get(Limelight3A.class, BTJConfiguration.LIMELIGHT);
     }
 
 
@@ -32,21 +32,20 @@ public class BTJLimeLight {
         }
     }
 
-    public static void getDistance() {
-        if (llResult != null) {
+    public static double getDistance() {
+         if (llResult != null) {
             llResult = limelight.getLatestResult();
-            llResult.getTa();
+           return llResult.getTa();
         }
-
+         return 0;
     }
 
-    public static void getAngele() {
+    public static double getAngele() {
         if (llResult != null) {
             llResult = limelight.getLatestResult();
             llResult.getTx();
         }
-
+        return 0;
     }
-
 
 }
