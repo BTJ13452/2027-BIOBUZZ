@@ -33,4 +33,9 @@ public class PPDrive extends Drive {
     public void resetFieldo() {
         follower.setHeading(0);
     }
+
+    @Override
+    public String toString() {
+        return "Position: " + follower.pose().toString();
+    }
 }

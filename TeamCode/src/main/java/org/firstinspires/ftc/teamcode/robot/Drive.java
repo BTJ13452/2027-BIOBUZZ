@@ -25,4 +25,7 @@ public abstract class Drive {
     public abstract void drive(double x, double y, double r);
     public abstract void resetFieldo();
 
+    @Override
+    public abstract String toString();
+
 }

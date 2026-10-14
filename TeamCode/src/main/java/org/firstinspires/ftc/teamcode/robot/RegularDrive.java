@@ -11,13 +11,11 @@ import org.firstinspires.ftc.teamcode.util.BTJDirections;
 
 public class RegularDrive extends Drive {
 
-
-    IMU imu;
-
     DcMotor motorFrontLeft;
     DcMotor motorFrontRight;
     DcMotor motorBackLeft;
     DcMotor motorBackRight;
+    IMU imu;
 
     double heading;
 
@@ -81,6 +79,16 @@ public class RegularDrive extends Drive {
     public void resetFieldo() {
         imu.resetYaw();
         heading = 0;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Motor front left power: " + motorFrontLeft. getPower() + "\n" +
+                "Motor back left power: " + motorBackLeft.getPower() + "\n" +
+                "Motor front right power: " + motorFrontRight.getPower() + "\n" +
+                "motor back right power: " + motorBackRight.getPower() + "\n" +
+                "Heading: " + heading;
 
     }
 }
