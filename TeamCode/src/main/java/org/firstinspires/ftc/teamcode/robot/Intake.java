@@ -7,11 +7,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 import org.firstinspires.ftc.teamcode.util.BTJDirections;
 
-public class Intake implements BasicSystem{
+public class Intake implements BasicSystem {
 
 
     final double MOTOR_POWER = 1;
-
 
     DcMotor motor;
 
@@ -41,6 +40,11 @@ public class Intake implements BasicSystem{
     @Override
     public boolean isActive() {
         return Math.abs(MOTOR_POWER - motor.getPower()) < 1e-9;
+    }
+
+    @Override
+    public String toString() {
+        return "Motor power: " + motor.getPower() + "\n";
     }
 
 }
