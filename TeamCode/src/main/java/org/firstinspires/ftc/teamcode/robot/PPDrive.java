@@ -35,6 +35,11 @@ public class PPDrive extends Drive {
     }
 
     @Override
+    public void emergencyStop() {
+        follower.stop();
+    }
+
+    @Override
     public String toString() {
         return "Position: " + follower.pose().toString();
     }

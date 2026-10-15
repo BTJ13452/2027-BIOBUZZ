@@ -34,13 +34,13 @@ public class Intake implements BasicSystem {
     }
 
     @Override
-    public void eStop() {
-        motor.setPower(0);
+    public boolean isActive() {
+        return Math.abs(MOTOR_POWER - motor.getPower()) < 1e-9;
     }
 
     @Override
-    public boolean isActive() {
-        return Math.abs(MOTOR_POWER - motor.getPower()) < 1e-9;
+    public void emergencyStop() {
+        motor.setPower(0);
     }
 
     @Override

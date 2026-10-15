@@ -83,6 +83,14 @@ public class RegularDrive extends Drive {
     }
 
     @Override
+    public void emergencyStop() {
+       motorFrontLeft.setPower(0);
+       motorBackLeft.setPower(0);
+       motorFrontRight.setPower(0);
+       motorBackRight.setPower(0);
+    }
+
+    @Override
     public String toString() {
         return "Motor front left power: " + motorFrontLeft. getPower() + "\n" +
                 "Motor back left power: " + motorBackLeft.getPower() + "\n" +

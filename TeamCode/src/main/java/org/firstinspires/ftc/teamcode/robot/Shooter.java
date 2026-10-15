@@ -64,14 +64,14 @@ public class Shooter implements BasicSystem {
     }
 
     @Override
-    public void eStop() {
-        shooterMotor1.setPower(0);
-        shooterMotor2.setPower(0);
+    public boolean isActive() {
+        return shooterMotor1.getPower() != 0;
     }
 
     @Override
-    public boolean isActive() {
-        return shooterMotor1.getPower() != 0;
+    public void emergencyStop() {
+        shooterMotor1.setPower(0);
+        shooterMotor2.setPower(0);
     }
 
     @Override

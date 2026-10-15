@@ -2,7 +2,9 @@ package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-public abstract class Drive {
+import org.firstinspires.ftc.teamcode.util.BTJSystem;
+
+public abstract class Drive implements BTJSystem {
 
 
     final double ROTATION_SENSITIVITY = 1;
