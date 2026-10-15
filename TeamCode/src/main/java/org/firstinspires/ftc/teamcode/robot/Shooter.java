@@ -74,4 +74,11 @@ public class Shooter implements BasicSystem {
         return shooterMotor1.getPower() != 0;
     }
 
+    @Override
+    public String toString() {
+        return "Shooter motor power: " + shooterMotor1.getPower() + "\n" +
+                "Shooter motor2 power: " + shooterMotor2.getPower() + "\n" +
+                "PIDF Coefficients: " + pidfCoefficients.toString();
+
+    }
 }
