@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
+import org.firstinspires.ftc.teamcode.util.AllianceColor;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 
 public class BTJLimeLight {
@@ -12,8 +13,9 @@ public class BTJLimeLight {
     static LLResult llResult;
 
 
-    public BTJLimeLight(HardwareMap hardwareMap) {
+    public BTJLimeLight(HardwareMap hardwareMap, AllianceColor allianceColor) {
         limelight = hardwareMap.get(Limelight3A.class, BTJConfiguration.LIMELIGHT);
+        limeLightStart(allianceColor.getValue());
     }
 
 
@@ -26,23 +28,18 @@ public class BTJLimeLight {
         limelight.stop();
     }
 
-    public static void getLatestResult() {
-        if (llResult != null) {
-            llResult = limelight.getLatestResult();
-        }
-    }
 
     public static double getDistance() {
-         if (llResult != null) {
-            llResult = limelight.getLatestResult();
-           return llResult.getTa();
+        llResult = limelight.getLatestResult();
+        if (llResult != null) {
+            return llResult.getTa();
         }
-         return 0;
+        return 0;
     }
 
-    public static double getAngele() {
+    public static double getAngel() {
+        llResult = limelight.getLatestResult();
         if (llResult != null) {
-            llResult = limelight.getLatestResult();
             return llResult.getTx();
         }
         return 0;
