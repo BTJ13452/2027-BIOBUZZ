@@ -7,20 +7,21 @@ import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.util.AxonServo;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 
 @Disabled
 @TeleOp
 public class TestAxonEncoder extends OpMode {
+    AxonServo axon;
 
-    AnalogInput encoder;
-    CRServo axon;
+
 
 
     @Override
     public void init() {
-        encoder = hardwareMap.analogInput.get("encoder test");
-        axon = hardwareMap.crservo.get("axon test");
+        axon = new AxonServo(hardwareMap, "axon test", "encoder test");
+
     }
 
     @Override
@@ -38,7 +39,9 @@ public class TestAxonEncoder extends OpMode {
             axon.setPower(0);
         }
 
-        telemetry.addData("v", encoder.getVoltage());
+        axon.update();
+        telemetry.addData("angle", axon.getAngel());
+        telemetry.addData("angle", axon.getTotalAngle());
         telemetry.update();
     }
 }
