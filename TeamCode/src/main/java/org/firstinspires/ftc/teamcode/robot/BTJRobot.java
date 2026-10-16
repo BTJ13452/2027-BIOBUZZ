@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.util.BTJSystem;
 
-public class BTJRobot {
+public class BTJRobot implements BTJSystem{
     final boolean START_FIELDO = false;
 
     public Drive drive;
@@ -19,6 +19,7 @@ public class BTJRobot {
 //        shooter = new Shooter(hardwareMap);
     }
 
+    @Override
     public void emergencyStop() {
         for (int i = 0; i < systems.length; i++) {
             systems[i].emergencyStop();
@@ -32,6 +33,13 @@ public class BTJRobot {
             output += ("\n" + systems[i].getClass() + ": \n" + systems[i].toString() +"\n");
         }
         return output;
+    }
+
+    @Override
+    public void update(){
+        for (int i = 0; i < systems.length; i++){
+            systems[i].update();
+        }
     }
 
 
