@@ -8,6 +8,10 @@ public class BTJConfiguration {
     public static final String INTAKE_MOTOR_NAME = "Intake motor";
     public static final String SHOOTER_MOTOR1_NAME = "";
     public static final String SHOOTER_MOTOR2_NAME = "";
+
+    public static final String FLOWER_INTAKE_SERVO_RIGHT_NAME = "";
+    public static final String FLOWER_INTAKE_SERVO_LEFT_NAME = "";
+
     public static final String LIMELIGHT = "limelight";
 
 

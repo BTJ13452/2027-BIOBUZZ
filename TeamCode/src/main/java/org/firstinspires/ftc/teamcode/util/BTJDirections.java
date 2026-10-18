@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.util;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class BTJDirections {
 
@@ -12,5 +13,8 @@ public class BTJDirections {
     public static final DcMotorSimple.Direction INTAKE_MOTOR_DIRECTION = DcMotorSimple.Direction.REVERSE;
     public static final DcMotorEx.Direction SHOOTER_MOTOR1_DIRECTION = DcMotorEx.Direction.FORWARD;
     public static final DcMotorEx.Direction SHOOTER_MOTOR2_DIRECTION = DcMotorEx.Direction.FORWARD;
+
+    public static final Servo.Direction FLOWER_INTAKE_SERVO_RIGHT_DIRECTION = Servo.Direction.FORWARD;
+    public static final Servo.Direction FLOWER_INTAKE_SERVO_LEFT_DIRECTION = Servo.Direction.FORWARD;
 
 }
