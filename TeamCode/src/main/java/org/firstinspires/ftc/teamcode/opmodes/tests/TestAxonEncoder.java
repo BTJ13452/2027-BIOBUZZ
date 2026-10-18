@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.util.AxonServo;
@@ -21,7 +22,7 @@ public class TestAxonEncoder extends OpMode {
     @Override
     public void init() {
         axon = new AxonServo(hardwareMap, "axon test", "encoder test");
-
+        axon.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class TestAxonEncoder extends OpMode {
     @Override
     public void loop() {
         if (gamepad1.aWasPressed()) {
-            axon.setPower(0.2);
+            axon.setPower(-0.2);
         }
 
         if ((gamepad1.bWasPressed())) {
@@ -40,7 +41,7 @@ public class TestAxonEncoder extends OpMode {
         }
 
         axon.update();
-        telemetry.addData("angle", axon.getAngel());
+        telemetry.addData("angle", axon.getAngle());
         telemetry.addData("angle", axon.getTotalAngle());
         telemetry.update();
     }

@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.CRServoImpl;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class AxonServo extends CRServoImpl {
-    final double RADIANS_PER_VOLT = 2 * Math.PI / 3.3;
     final double RADIANS_PER_ROTATION = 2 * Math.PI;
+    final double RADIANS_PER_VOLT = RADIANS_PER_ROTATION / 3.3;
     final double ANGLE_WRAP_THRESHOLD = Math.PI;
 
     AnalogInput encoder;
@@ -21,12 +21,17 @@ public class AxonServo extends CRServoImpl {
         encoder = hardwareMap.analogInput.get(encoderName);
     }
 
-    public double getAngel() {
-        return encoder.getVoltage() * RADIANS_PER_VOLT;
+    public double getAngle() {
+        if (getDirection()==Direction.FORWARD){
+            return RADIANS_PER_ROTATION - encoder.getVoltage() * RADIANS_PER_VOLT;
+        }
+        else {
+            return encoder.getVoltage() * RADIANS_PER_VOLT;
+        }
     }
 
     public void update() {
-        double currentAngle = getAngel();
+        double currentAngle = getAngle();
         if (lastAngle - currentAngle > ANGLE_WRAP_THRESHOLD)
             rotationCount++;
         if (currentAngle - lastAngle > ANGLE_WRAP_THRESHOLD)
@@ -36,7 +41,7 @@ public class AxonServo extends CRServoImpl {
     }
 
     public double getTotalAngle() {
-        return rotationCount * RADIANS_PER_ROTATION + getAngel();
+        return rotationCount * RADIANS_PER_ROTATION + getAngle();
     }
 
 
