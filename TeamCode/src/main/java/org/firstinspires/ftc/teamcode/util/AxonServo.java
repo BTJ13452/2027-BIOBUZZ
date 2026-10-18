@@ -21,11 +21,6 @@ public class AxonServo extends CRServoImpl {
         encoder = hardwareMap.analogInput.get(encoderName);
     }
 
-    public void setEncoder(HardwareMap hardwareMap, String encoderName) {
-        encoder = hardwareMap.analogInput.get(encoderName);
-        this.getPower();
-    }
-
     public double getAngel() {
         return encoder.getVoltage() * RADIANS_PER_VOLT;
     }
