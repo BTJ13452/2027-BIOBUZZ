@@ -4,9 +4,8 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.follower.ManualDrive;
-import com.pedropathing.math.Pose;
 
-import org.firstinspires.ftc.teamcode.robot.pedro.Constants;
+import org.firstinspires.ftc.teamcode.util.pedro.Constants;
 
 public class PPDrive extends Drive {
 

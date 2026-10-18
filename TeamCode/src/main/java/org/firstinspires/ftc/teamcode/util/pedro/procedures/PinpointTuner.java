@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.robot.pedro.procedures;
+package org.firstinspires.ftc.teamcode.util.pedro.procedures;
 
 import com.pedropathing.math.Pose;
 import com.pedropathing.revhub.localizers.PinpointConfig;
