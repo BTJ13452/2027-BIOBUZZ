@@ -16,5 +16,7 @@ public class BTJDirections {
 
     public static final Servo.Direction FLOWER_INTAKE_SERVO_RIGHT_DIRECTION = Servo.Direction.FORWARD;
     public static final Servo.Direction FLOWER_INTAKE_SERVO_LEFT_DIRECTION = Servo.Direction.FORWARD;
+    public static final Servo.Direction FLOWER_SHOOTER_SERVO_RIGHT_DIRECTION = Servo.Direction.FORWARD;
+    public static final Servo.Direction FLOWER_SHOOTER_SERVO_LEFT_DIRECTION = Servo.Direction.FORWARD;
 
 }

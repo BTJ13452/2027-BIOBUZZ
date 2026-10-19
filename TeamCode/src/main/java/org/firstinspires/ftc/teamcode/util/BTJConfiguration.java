@@ -11,6 +11,8 @@ public class BTJConfiguration {
 
     public static final String FLOWER_INTAKE_SERVO_RIGHT_NAME = "";
     public static final String FLOWER_INTAKE_SERVO_LEFT_NAME = "";
+    public static final String FLOWER_SHOOTER_SERVO_RIGHT_NAME = "";
+    public static final String FLOWER_SHOOTER_SERVO_LEFT_NAME = "";
 
     public static final String LIMELIGHT = "limelight";
 
