@@ -1,6 +1,12 @@
 package org.firstinspires.ftc.teamcode.util;
 
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import java.util.concurrent.TimeUnit;
+
 public class BTJPID {
+
+    ElapsedTime clock;
     double kp, ki, kd;
     double lastRunTime = -1;
     double lastDeltaX;
@@ -10,9 +16,14 @@ public class BTJPID {
         this.kp = kp;
         this.ki = ki;
         this.kd = kd;
+
+        clock = new ElapsedTime();
+        clock.reset();
     }
 
-    public double power(double deltaX, double runTime) {
+    public double power(double deltaX) {
+        double runTime = clock.time(TimeUnit.SECONDS);
+
         double deltaT = lastRunTime == -1 ? 0 : runTime - lastRunTime;
         lastRunTime = runTime;
         integral += deltaT * deltaX;
@@ -21,7 +32,8 @@ public class BTJPID {
         lastDeltaX = deltaX;
 
         double power = kp * deltaX + ki * integral + kd * derivative;
-        power = Math.max(-1,Math.min(power,1));
+        power = Math.max(-1, Math.min(power, 1));
         return power;
     }
+
 }
