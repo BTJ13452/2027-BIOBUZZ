@@ -25,11 +25,11 @@ public class Intake implements BasicSystem {
         motor.setDirection(BTJDirections.INTAKE_MOTOR_DIRECTION);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-//        flowerServoRight=hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
-//        flowerServoLeft=hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
-//        flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
-//        flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
-//        stopIntakeFromFlower();
+        flowerServoRight=hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
+        flowerServoLeft=hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
+        flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
+        flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
+        stopIntakeFromFlower();
     }
 
     @Override
