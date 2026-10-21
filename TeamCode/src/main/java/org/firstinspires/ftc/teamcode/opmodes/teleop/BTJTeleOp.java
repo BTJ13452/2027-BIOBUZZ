@@ -39,12 +39,5 @@ public class BTJTeleOp extends OpMode {
         }
 
 
-        if (gamepad1.bWasPressed()){
-            if (robot.shooter.isActive())
-                robot.shooter.deactivate();
-            else
-                robot.shooter.activate();
-        }
-
     }
 }
