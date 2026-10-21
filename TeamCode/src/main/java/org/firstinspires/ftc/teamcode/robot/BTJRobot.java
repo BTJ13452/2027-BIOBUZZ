@@ -15,9 +15,9 @@ public class BTJRobot implements BTJSystem{
 
     public BTJRobot(HardwareMap hardwareMap, double startHeading) {
         drive = new RegularDrive(hardwareMap, startHeading, START_FIELDO);
-//        intake = new Intake(hardwareMap);
+        intake = new Intake(hardwareMap);
 //        shooter = new Shooter(hardwareMap);
-    }
+        }
 
     @Override
     public void emergencyStop() {
