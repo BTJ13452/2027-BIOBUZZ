@@ -13,7 +13,6 @@ public class BTJTeleOp extends OpMode {
     BTJRobot robot;
 
 
-
     @Override
     public void init() {
         robot = new BTJRobot(hardwareMap, START_HEADING);
@@ -36,6 +35,13 @@ public class BTJTeleOp extends OpMode {
                 robot.intake.deactivate();
             else
                 robot.intake.activate();
+        }
+
+        if (gamepad1.bWasPressed()) {
+            if (robot.intake.isUp)
+                robot.intake.intakeFromFlower();
+            else
+                robot.intake.stopIntakeFromFlower();
         }
 
 
