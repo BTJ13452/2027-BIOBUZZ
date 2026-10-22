@@ -36,4 +36,13 @@ public class BTJPID {
         return power;
     }
 
+
+    @Override
+    public String toString() {
+        return "Last run time: " +lastRunTime + "\n" +
+                "Last delta X: " + lastDeltaX+ "\n" +
+                "kp: " + kp +  "ki: " + ki +  "kd: " + kd ;
+    }
+
+
 }
