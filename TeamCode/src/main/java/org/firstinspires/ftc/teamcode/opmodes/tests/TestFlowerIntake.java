@@ -19,11 +19,11 @@ public class TestFlowerIntake extends OpMode {
     @Override
     public void loop() {
         if(gamepad1.aWasPressed()){
-            intake.intakeFromFlower();
+            intake.intakeFromFlower.activate();
         }
 
         if (gamepad1.bWasPressed()) {
-            intake.stopIntakeFromFlower();
+            intake.deactivate();
         }
 
     }

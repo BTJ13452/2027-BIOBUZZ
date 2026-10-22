@@ -38,10 +38,10 @@ public class BTJTeleOp extends OpMode {
         }
 
         if (gamepad1.bWasPressed()) {
-            if (robot.intake.isUp)
-                robot.intake.intakeFromFlower();
+            if (robot.intake.intakeFromFlower.isActive())
+                robot.intake.intakeFromFlower.deactivate();
             else
-                robot.intake.stopIntakeFromFlower();
+                robot.intake.intakeFromFlower.activate();
         }
 
 

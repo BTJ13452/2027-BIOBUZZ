@@ -11,27 +11,17 @@ import org.firstinspires.ftc.teamcode.util.BasicSystem;
 
 public class Intake implements BasicSystem {
     final double MOTOR_POWER = 1;
-    final double FLOWER_SERVO_RIGHT_INTAKE_POSITION = 1;
-    final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0;
-    final double FLOWER_SERVO_LEFT_INTAKE_POSITION = 1;
-    final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
 
     DcMotor motor;
-    Servo flowerServoRight;
-    Servo flowerServoLeft;
+    public IntakeFromFlower intakeFromFlower;
 
-    public boolean isUp = true;
 
     public Intake(HardwareMap hardwareMap) {
         motor = hardwareMap.dcMotor.get(BTJConfiguration.INTAKE_MOTOR_NAME);
         motor.setDirection(BTJDirections.INTAKE_MOTOR_DIRECTION);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        flowerServoRight = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
-        flowerServoLeft = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
-        flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
-        flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
-        stopIntakeFromFlower();
+        intakeFromFlower = new IntakeFromFlower(hardwareMap);
     }
 
     @Override
@@ -43,20 +33,6 @@ public class Intake implements BasicSystem {
     public void deactivate() {
         motor.setPower(0);
     }
-
-    public void intakeFromFlower() {
-        isUp = false;
-        flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INTAKE_POSITION);
-        flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_INTAKE_POSITION);
-        activate();
-    }
-
-    public void stopIntakeFromFlower() {
-        isUp = true ;
-        flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_DEFAULT_POSITION);
-        flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_DEFAULT_POSITION);
-    }
-
 
     @Override
     public boolean isActive() {
@@ -71,5 +47,52 @@ public class Intake implements BasicSystem {
     @Override
     public String toString() {
         return "Motor power: " + motor.getPower() + "\n";
+    }
+
+
+    public class IntakeFromFlower implements BasicSystem {
+        final double FLOWER_SERVO_RIGHT_INTAKE_POSITION = 1;
+        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0;
+        final double FLOWER_SERVO_LEFT_INTAKE_POSITION = 1;
+        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
+
+
+        Servo flowerServoRight;
+        Servo flowerServoLeft;
+
+        public IntakeFromFlower(HardwareMap hardwareMap) {
+            flowerServoRight = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
+            flowerServoLeft = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
+            flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
+            flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
+            deactivate();
+        }
+
+        @Override
+        public void activate() {
+            flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INTAKE_POSITION);
+            flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_INTAKE_POSITION);
+        }
+
+        @Override
+        public void deactivate() {
+            flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_DEFAULT_POSITION);
+            flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_DEFAULT_POSITION);
+        }
+
+        @Override
+        public boolean isActive() {
+            return flowerServoRight.getPosition() == FLOWER_SERVO_RIGHT_INTAKE_POSITION;
+        }
+
+        @Override
+        public void emergencyStop() {
+
+        }
+
+        @Override
+        public String toString() {
+            return "Is active: " + isActive();
+        }
     }
 }
