@@ -13,6 +13,9 @@ public class BTJConfiguration {
     public static final String FLOWER_INTAKE_SERVO_LEFT_NAME = "Flower servo left";
     public static final String FLOWER_SHOOTER_SERVO_RIGHT_NAME = "";
     public static final String FLOWER_SHOOTER_SERVO_LEFT_NAME = "";
+    public static final String TURRET_SERVO_NAME = "Turret servo";
+    public static final String TURRET_ENCODER_NAME = "Servo encoder";
+
 
     public static final String LIMELIGHT = "limelight";
     public static final String LEFT_LED = "";
