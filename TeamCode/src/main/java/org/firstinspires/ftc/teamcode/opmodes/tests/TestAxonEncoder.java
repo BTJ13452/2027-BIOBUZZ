@@ -3,25 +3,21 @@ package org.firstinspires.ftc.teamcode.opmodes.tests;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.AnalogInput;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.util.AxonServo;
-import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
+import org.firstinspires.ftc.teamcode.util.AxonCRServo;
 
 @Disabled
 @TeleOp
 public class TestAxonEncoder extends OpMode {
-    AxonServo axon;
+    AxonCRServo axon;
 
 
 
 
     @Override
     public void init() {
-        axon = new AxonServo(hardwareMap, "axon test", "encoder test");
+        axon = new AxonCRServo(hardwareMap, "axon test", "encoder test");
         axon.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 

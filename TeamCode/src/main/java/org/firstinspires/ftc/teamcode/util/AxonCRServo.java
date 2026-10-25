@@ -1,12 +1,10 @@
 package org.firstinspires.ftc.teamcode.util;
 
-import androidx.annotation.NonNull;
-
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.CRServoImpl;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class AxonServo extends CRServoImpl {
+public class AxonCRServo extends CRServoImpl {
     final double RADIANS_PER_ROTATION = 2 * Math.PI;
     final double RADIANS_PER_VOLT = RADIANS_PER_ROTATION / 3.3;
     final double ANGLE_WRAP_THRESHOLD = Math.PI;
@@ -16,7 +14,7 @@ public class AxonServo extends CRServoImpl {
     double lastAngle = 0;
     int rotationCount = 0;
 
-    public AxonServo(HardwareMap hardwareMap, String servoName, String encoderName) {
+    public AxonCRServo(HardwareMap hardwareMap, String servoName, String encoderName) {
         super(hardwareMap.crservo.get(servoName).getController(), hardwareMap.crservo.get(servoName).getPortNumber());
         encoder = hardwareMap.analogInput.get(encoderName);
     }

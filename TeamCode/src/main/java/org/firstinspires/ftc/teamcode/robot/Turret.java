@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.util.AxonServo;
+import org.firstinspires.ftc.teamcode.util.AxonCRServo;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 import org.firstinspires.ftc.teamcode.util.BTJDirections;
 import org.firstinspires.ftc.teamcode.util.BTJPID;
@@ -18,7 +18,7 @@ public class Turret implements BTJSystem {
 
     final double MIN_ANGLE = -180;
     final double GEAR_RATIO = 2.75;
-    AxonServo axonServo;
+    AxonCRServo axonCRServo;
     double targetAngle;
     BTJPID pid;
 
@@ -26,8 +26,8 @@ public class Turret implements BTJSystem {
 
 
     public Turret(HardwareMap hardwareMap) {
-        axonServo = new AxonServo(hardwareMap, BTJConfiguration.TURRET_SERVO_NAME, BTJConfiguration.TURRET_ENCODER_NAME);
-        axonServo.setDirection(BTJDirections.TURRET_SERVO_DIRECTION);
+        axonCRServo = new AxonCRServo(hardwareMap, BTJConfiguration.TURRET_SERVO_NAME, BTJConfiguration.TURRET_ENCODER_NAME);
+        axonCRServo.setDirection(BTJDirections.TURRET_SERVO_DIRECTION);
         targetAngle = 0;
         pid = new BTJPID(KP, KI, KD);
         isStopped = false;
@@ -42,20 +42,20 @@ public class Turret implements BTJSystem {
 
     @Override
     public void emergencyStop() {
-        axonServo.setPower(0);
+        axonCRServo.setPower(0);
         isStopped = true;
     }
 
     @Override
     public void update() {
         if (!isStopped)
-            axonServo.setPower(pid.power(targetAngle * GEAR_RATIO - axonServo.getTotalAngle()));
+            axonCRServo.setPower(pid.power(targetAngle * GEAR_RATIO - axonCRServo.getTotalAngle()));
     }
 
     @Override
     public String toString() {
         return "Target angle: " + targetAngle + "\n" +
-                "Servo power: " + axonServo.getPower() + "\n" +
+                "Servo power: " + axonCRServo.getPower() + "\n" +
                 "PID: " + pid.toString();
     }
 }
