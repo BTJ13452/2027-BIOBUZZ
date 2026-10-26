@@ -46,7 +46,9 @@ public class Intake implements BasicSystem {
 
     @Override
     public String toString() {
-        return "Motor power: " + motor.getPower() + "\n";
+        return "Motor power: " + motor.getPower() + "\n" +
+                "intakeFromFlower: " + "\n" +
+                intakeFromFlower.toString();
     }
 
 
