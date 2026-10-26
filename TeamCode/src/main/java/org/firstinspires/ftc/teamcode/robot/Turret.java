@@ -14,9 +14,9 @@ public class Turret implements BTJSystem {
     final double KI = 0;
     final double KD = 0;
 
-    final double MAX_ANGLE = 180;
+    final double MAX_ANGLE = Math.PI;
 
-    final double MIN_ANGLE = -180;
+    final double MIN_ANGLE = -Math.PI;
     final double GEAR_RATIO = 2.75;
     AxonCRServo axonCRServo;
     double targetAngle;
@@ -56,7 +56,7 @@ public class Turret implements BTJSystem {
     public String toString() {
         return "Target angle: " + targetAngle + "\n" +
                 "Servo power: " + axonCRServo.getPower() + "\n" +
-                "PID: " + pid.toString();
+                "PID:  " + pid.toString();
     }
 }
 
