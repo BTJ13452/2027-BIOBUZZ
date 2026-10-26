@@ -20,17 +20,14 @@ public class Shooter implements BasicSystem {
     public static double KI = 0;
     final static double KD = 0;
     final static double KF = 0;
-    final double FLOWER_SERVO_RIGHT_SHOOTER_POSITION = 1;
-    final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0;
-    final double FLOWER_SERVO_LEFT_SHOOTER_POSITION = 1;
-    final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
 
     PIDFCoefficients pidfCoefficients;
 
+    public ShooterToFlower shooterToFlower;
+
     DcMotorEx shooterMotor1;
     DcMotorEx shooterMotor2;
-    Servo flowerServoRight;
-    Servo flowerServoLeft;
+
 
     public Shooter(HardwareMap hardwareMap) {
         shooterMotor1 = hardwareMap.get(DcMotorEx.class, BTJConfiguration.SHOOTER_MOTOR1_NAME);
@@ -44,11 +41,7 @@ public class Shooter implements BasicSystem {
 
         pidfCoefficients = new PIDFCoefficients(KP, KD, KI, KF);
 
-//        flowerServoRight=hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_RIGHT_NAME);
-//        flowerServoRight=hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_LEFT_NAME);
-//        flowerServoRight.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_RIGHT_DIRECTION);
-//        flowerServoRight.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_LEFT_DIRECTION);
-//        stopAimingToShooter();
+//        shooterToFlower = new ShooterToFlower(hardwareMap);
     }
 
     public void runByPidf() {
@@ -59,16 +52,6 @@ public class Shooter implements BasicSystem {
 
     public double shooterByDistance() {
         return COEFFICIENT * Math.pow(EXPONENT, BTJLimeLight.getDistance());
-    }
-
-    public void aimToFlower(){
-        flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_SHOOTER_POSITION);
-        flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_SHOOTER_POSITION);
-    }
-
-    public void stopAimingToShooter(){
-        flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_DEFAULT_POSITION);
-        flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_DEFAULT_POSITION);
     }
 
 
@@ -100,7 +83,57 @@ public class Shooter implements BasicSystem {
     public String toString() {
         return "Shooter motor power: " + shooterMotor1.getPower() + "\n" +
                 "Shooter motor2 power: " + shooterMotor2.getPower() + "\n" +
-                "PIDF Coefficients: " + pidfCoefficients.toString();
+                "PIDF Coefficients: " + pidfCoefficients.toString() + "\n" +
+                "Shooter to flower: " + "\n" +
+                shooterToFlower.toString();
+    }
 
+
+    public class ShooterToFlower implements BasicSystem {
+
+        final double FLOWER_SERVO_RIGHT_SHOOTER_POSITION = 1;
+        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0;
+        final double FLOWER_SERVO_LEFT_SHOOTER_POSITION = 1;
+        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
+
+        Servo flowerServoRight;
+        Servo flowerServoLeft;
+
+        public ShooterToFlower(HardwareMap hardwareMap) {
+            flowerServoRight = hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_RIGHT_NAME);
+            flowerServoLeft = hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_LEFT_NAME);
+            flowerServoRight.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_RIGHT_DIRECTION);
+            flowerServoLeft.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_LEFT_DIRECTION);
+            deactivate();
+        }
+
+        @Override
+        public void activate() {
+            flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_SHOOTER_POSITION);
+            flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_SHOOTER_POSITION);
+        }
+
+        @Override
+        public void deactivate() {
+            flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_DEFAULT_POSITION);
+            flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_DEFAULT_POSITION);
+        }
+
+        @Override
+        public boolean isActive() {
+            return flowerServoRight.getPosition() == FLOWER_SERVO_RIGHT_SHOOTER_POSITION;
+
+        }
+
+        @Override
+        public void emergencyStop() {
+
+        }
+
+        @Override
+        public String toString() {
+            return "Is active: " + isActive();
+
+        }
     }
 }
