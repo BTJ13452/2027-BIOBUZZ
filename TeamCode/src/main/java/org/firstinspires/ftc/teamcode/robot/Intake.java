@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.util.AxonServo;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 import org.firstinspires.ftc.teamcode.util.BTJDirections;
 import org.firstinspires.ftc.teamcode.util.BasicSystem;
@@ -59,12 +60,12 @@ public class Intake implements BasicSystem {
         final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
 
 
-        Servo flowerServoRight;
-        Servo flowerServoLeft;
+        AxonServo flowerServoRight;
+        AxonServo flowerServoLeft;
 
         public IntakeFromFlower(HardwareMap hardwareMap) {
-            flowerServoRight = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
-            flowerServoLeft = hardwareMap.servo.get(BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
+            flowerServoRight = new AxonServo(hardwareMap, BTJConfiguration.FLOWER_INTAKE_SERVO_RIGHT_NAME);
+            flowerServoLeft = new AxonServo(hardwareMap, BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
             flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
             flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
             deactivate();
@@ -84,7 +85,7 @@ public class Intake implements BasicSystem {
 
         @Override
         public boolean isActive() {
-            return flowerServoRight.getPosition() == FLOWER_SERVO_RIGHT_INTAKE_POSITION;
+            return flowerServoRight.getTargetPosition() == FLOWER_SERVO_RIGHT_INTAKE_POSITION;
         }
 
         @Override
