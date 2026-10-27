@@ -44,11 +44,6 @@ public class BTJLEDs implements BTJSystem {
     }
 
     @Override
-    public void emergencyStop() {
-
-    }
-
-    @Override
     public String toString() {
         return "";
     }
