@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.util.AxonServo;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 import org.firstinspires.ftc.teamcode.util.BTJDirections;
 import org.firstinspires.ftc.teamcode.util.BTJLimeLight;
@@ -96,12 +97,12 @@ public class Shooter implements BasicSystem {
         final double FLOWER_SERVO_LEFT_SHOOTER_POSITION = 1;
         final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
 
-        Servo flowerServoRight;
-        Servo flowerServoLeft;
+        AxonServo flowerServoRight;
+        AxonServo flowerServoLeft;
 
         public ShooterToFlower(HardwareMap hardwareMap) {
-            flowerServoRight = hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_RIGHT_NAME);
-            flowerServoLeft = hardwareMap.servo.get(BTJConfiguration.FLOWER_SHOOTER_SERVO_LEFT_NAME);
+            flowerServoRight = new AxonServo(hardwareMap, BTJConfiguration.FLOWER_SHOOTER_SERVO_RIGHT_NAME);
+            flowerServoLeft = new AxonServo(hardwareMap, BTJConfiguration.FLOWER_SHOOTER_SERVO_LEFT_NAME);
             flowerServoRight.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_RIGHT_DIRECTION);
             flowerServoLeft.setDirection(BTJDirections.FLOWER_SHOOTER_SERVO_LEFT_DIRECTION);
             deactivate();
@@ -121,7 +122,7 @@ public class Shooter implements BasicSystem {
 
         @Override
         public boolean isActive() {
-            return flowerServoRight.getPosition() == FLOWER_SERVO_RIGHT_SHOOTER_POSITION;
+            return flowerServoRight.getTargetPosition() == FLOWER_SERVO_RIGHT_SHOOTER_POSITION;
 
         }
 
