@@ -127,11 +127,6 @@ public class Shooter implements BasicSystem {
         }
 
         @Override
-        public void emergencyStop() {
-
-        }
-
-        @Override
         public String toString() {
             return "Is active: " + isActive();
 
