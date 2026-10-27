@@ -13,41 +13,50 @@ import org.firstinspires.ftc.teamcode.util.BasicSystem;
 public class Intake implements BasicSystem {
     final double MOTOR_POWER = 1;
 
-    DcMotor motor;
+    DcMotor motorLeft;
+    DcMotor motorRight;
+
     public IntakeFromFlower intakeFromFlower;
 
 
     public Intake(HardwareMap hardwareMap) {
-        motor = hardwareMap.dcMotor.get(BTJConfiguration.INTAKE_MOTOR_NAME);
-        motor.setDirection(BTJDirections.INTAKE_MOTOR_DIRECTION);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorLeft = hardwareMap.dcMotor.get(BTJConfiguration.INTAKE_MOTOR_LEFT_NAME);
+        motorRight = hardwareMap.dcMotor.get(BTJConfiguration.INTAKE_MOTOR_RIGHT_NAME);
+        motorLeft.setDirection(BTJDirections.INTAKE_MOTOR_LEFT_DIRECTION);
+        motorRight.setDirection(BTJDirections.INTAKE_MOTOR_RIGHT_DIRECTION);
+        motorLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         intakeFromFlower = new IntakeFromFlower(hardwareMap);
     }
 
     @Override
     public void activate() {
-        motor.setPower(MOTOR_POWER);
+        motorLeft.setPower(MOTOR_POWER);
+        motorRight.setPower(MOTOR_POWER);
     }
 
     @Override
     public void deactivate() {
-        motor.setPower(0);
+        motorLeft.setPower(0);
+        motorRight.setPower(0);
     }
 
     @Override
     public boolean isActive() {
-        return Math.abs(MOTOR_POWER - motor.getPower()) < 1e-9;
+        return Math.abs(MOTOR_POWER - motorLeft.getPower()) < 1e-9 || Math.abs(MOTOR_POWER - motorRight.getPower()) < 1e-9;
     }
 
     @Override
     public void emergencyStop() {
-        motor.setPower(0);
+        motorLeft.setPower(0);
+        motorRight.setPower(0);
     }
 
     @Override
     public String toString() {
-        return "Motor power: " + motor.getPower() + "\n" +
+        return "Left motor power: " + motorLeft.getPower() + "\n" +
+                "Right motor power: " + motorRight.getPower() + "\n" +
                 "intakeFromFlower: " + "\n" +
                 intakeFromFlower.toString();
     }
