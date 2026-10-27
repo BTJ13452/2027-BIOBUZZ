@@ -9,9 +9,26 @@ import org.firstinspires.ftc.teamcode.util.BTJSystem;
 
 public class BTJLEDs implements BTJSystem {
 
-    final double VALUE_FOR_GREEN = 0.500;
-    final double VALUE_FOR_RED = 0.277;
-    final double VALUE_FOR_OFF = 0.0;
+    public static enum Color{
+        OFF,
+        GREEN,
+        RED;
+
+        public double getValue(){
+            switch (this){
+                case OFF:
+                    return 0.0;
+                case RED:
+                    return 0.277;
+                case GREEN:
+                    return 0.500;
+                default:
+                    throw (new IllegalArgumentException());
+            }
+        }
+    }
+
+
     Servo leftLED;
     Servo rightLED;
 
@@ -21,21 +38,9 @@ public class BTJLEDs implements BTJSystem {
         rightLED = hardwareMap.servo.get(BTJConfiguration.RIGHT_LED);
     }
 
-    public void green() {
-        leftLED.setPosition(VALUE_FOR_GREEN);
-        rightLED.setPosition(VALUE_FOR_GREEN);
-    }
-
-    public void red() {
-        leftLED.setPosition(VALUE_FOR_RED);
-        rightLED.setPosition(VALUE_FOR_RED);
-    }
-
-
-    public void off() {
-        leftLED.setPosition(VALUE_FOR_OFF);
-        rightLED.setPosition(VALUE_FOR_OFF);
-
+    public void setColor(Color color){
+        leftLED.setPosition(color.getValue());
+        rightLED.setPosition(color.getValue());
     }
 
     @Override
