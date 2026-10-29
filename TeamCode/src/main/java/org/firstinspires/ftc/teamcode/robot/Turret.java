@@ -55,8 +55,8 @@ public class Turret implements BTJSystem {
     @Override
     public String toString() {
         return "Target angle: " + targetAngle + "\n" +
+                "currentAngle" + axonCRServo.getTotalAngle() + "\n" +
                 "Servo power: " + axonCRServo.getPower() + "\n" +
                 "PID:  " + pid.toString();
     }
 }
-
