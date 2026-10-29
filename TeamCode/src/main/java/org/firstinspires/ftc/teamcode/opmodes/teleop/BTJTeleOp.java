@@ -4,18 +4,18 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.robot.BTJRobot;
+import org.firstinspires.ftc.teamcode.util.AllianceColor;
 
 @TeleOp
 public class BTJTeleOp extends OpMode {
-
     final int START_HEADING = 0;
-
     BTJRobot robot;
 
+    AllianceColor allianceColor = AllianceColor.RED;
 
     @Override
     public void init() {
-        robot = new BTJRobot(hardwareMap, START_HEADING);
+        robot = new BTJRobot(hardwareMap, START_HEADING, allianceColor);
     }
 
     @Override
