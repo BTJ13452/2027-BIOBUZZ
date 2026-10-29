@@ -11,10 +11,15 @@ import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
 import org.firstinspires.ftc.teamcode.util.BTJDirections;
 import org.firstinspires.ftc.teamcode.util.BTJLimeLight;
 import org.firstinspires.ftc.teamcode.util.BasicSystem;
+import org.firstinspires.ftc.teamcode.util.ScoringElement;
 
 public class Shooter implements BasicSystem {
 
     final double MOTORS_POWER = 1;
+    final double RIGHT_PISTON_POSITION_FOR_POLLEN = 1;
+    final double LEFT_PISTON_POSITION_FOR_POLLEN = 1;
+    final double RIGHT_PISTON_POSITION_FOR_NECTAR = 0;
+    final double LEFT_PISTON_POSITION_FOR_NECTAR = 0;
     final double COEFFICIENT = 2000;
     final double EXPONENT = 1;
     final static double KP = 0;
@@ -29,6 +34,9 @@ public class Shooter implements BasicSystem {
     DcMotorEx shooterMotor1;
     DcMotorEx shooterMotor2;
 
+    Servo servoPistonLeft;
+    Servo servoPistonRight;
+
 
     public Shooter(HardwareMap hardwareMap) {
         shooterMotor1 = hardwareMap.get(DcMotorEx.class, BTJConfiguration.SHOOTER_MOTOR1_NAME);
@@ -40,9 +48,25 @@ public class Shooter implements BasicSystem {
         shooterMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         shooterMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        servoPistonLeft = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_LEFT_NAME);
+        servoPistonRight = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_RIGHT_NAME);
+
+        servoPistonLeft.setDirection(BTJDirections.PISTON_SERVO_LEFT_DIRECTION);
+        servoPistonRight.setDirection(BTJDirections.PISTON_SERVO_RIGHT_DIRECTION);
+
         pidfCoefficients = new PIDFCoefficients(KP, KD, KI, KF);
 
 //        shooterToFlower = new ShooterToFlower(hardwareMap);
+    }
+
+    public void setShooterSize(ScoringElement scoringElement) {
+        if (scoringElement == ScoringElement.POLLEN) {
+            servoPistonLeft.setPosition(LEFT_PISTON_POSITION_FOR_POLLEN);
+            servoPistonRight.setPosition(RIGHT_PISTON_POSITION_FOR_POLLEN);
+        } else {
+            servoPistonLeft.setPosition(LEFT_PISTON_POSITION_FOR_NECTAR);
+            servoPistonRight.setPosition(RIGHT_PISTON_POSITION_FOR_NECTAR);
+        }
     }
 
     public void runByPidf() {
