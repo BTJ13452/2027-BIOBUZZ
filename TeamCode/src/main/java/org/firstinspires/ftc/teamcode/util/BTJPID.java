@@ -22,7 +22,7 @@ public class BTJPID {
     }
 
     public double power(double deltaX) {
-        double runTime = clock.time(TimeUnit.SECONDS);
+        double runTime = clock.time(TimeUnit.MILLISECONDS);
 
         double deltaT = lastRunTime == -1 ? 0 : runTime - lastRunTime;
         lastRunTime = runTime;
