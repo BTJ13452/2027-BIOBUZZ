@@ -17,7 +17,7 @@ public class BTJConfiguration {
     public static final String TURRET_SERVO_NAME = "Turret servo";
     public static final String PISTON_SERVO_LEFT_NAME = "";
     public static final String PISTON_SERVO_RIGHT_NAME = "";
-
+    public static final String SHOOTER_ANGLE_SERVO_MANE = "";
 
 
     public static final String TURRET_ENCODER_NAME = "Servo encoder";

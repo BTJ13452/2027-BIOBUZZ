@@ -20,6 +20,10 @@ public class Shooter implements BasicSystem {
     final double LEFT_PISTON_POSITION_FOR_POLLEN = 1;
     final double RIGHT_PISTON_POSITION_FOR_NECTAR = 0;
     final double LEFT_PISTON_POSITION_FOR_NECTAR = 0;
+    final double SHOOTER_ANGLE_SERVO_MAX_POSITION = 1;
+    final double SHOOTER_ANGLE_SERVO_MIN_POSITION = 0;
+    final double SHOOTER_MAX_ANGLE = (85.0 / 360) * 2 * Math.PI;
+    final double SHOOTER_MIN_ANGLE = (75.0 / 360) * 2 * Math.PI;
     final double COEFFICIENT = 2000;
     final double EXPONENT = 1;
     final static double KP = 0;
@@ -36,7 +40,7 @@ public class Shooter implements BasicSystem {
 
     Servo servoPistonLeft;
     Servo servoPistonRight;
-
+    Servo servoShooterAngle;
 
     public Shooter(HardwareMap hardwareMap) {
         shooterMotor1 = hardwareMap.get(DcMotorEx.class, BTJConfiguration.SHOOTER_MOTOR1_NAME);
@@ -50,9 +54,10 @@ public class Shooter implements BasicSystem {
 
         servoPistonLeft = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_LEFT_NAME);
         servoPistonRight = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_RIGHT_NAME);
-
+        servoShooterAngle = hardwareMap.servo.get(BTJConfiguration.SHOOTER_ANGLE_SERVO_MANE);
         servoPistonLeft.setDirection(BTJDirections.PISTON_SERVO_LEFT_DIRECTION);
         servoPistonRight.setDirection(BTJDirections.PISTON_SERVO_RIGHT_DIRECTION);
+        servoShooterAngle.setDirection(BTJDirections.SHOOTER_ANGLE_SERVO_DIRECTION);
 
         pidfCoefficients = new PIDFCoefficients(KP, KD, KI, KF);
 
@@ -67,6 +72,14 @@ public class Shooter implements BasicSystem {
             servoPistonLeft.setPosition(LEFT_PISTON_POSITION_FOR_NECTAR);
             servoPistonRight.setPosition(RIGHT_PISTON_POSITION_FOR_NECTAR);
         }
+    }
+
+    public void setAngel(double angle) {
+        double position = (((angle - SHOOTER_MIN_ANGLE) / (SHOOTER_MAX_ANGLE - SHOOTER_MIN_ANGLE))
+                * (SHOOTER_ANGLE_SERVO_MAX_POSITION - SHOOTER_ANGLE_SERVO_MIN_POSITION))
+                + SHOOTER_ANGLE_SERVO_MIN_POSITION;
+
+        servoShooterAngle.setPosition(position);
     }
 
     public void runByPidf() {
