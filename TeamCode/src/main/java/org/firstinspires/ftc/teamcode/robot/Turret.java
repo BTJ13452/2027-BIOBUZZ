@@ -9,19 +9,15 @@ import org.firstinspires.ftc.teamcode.util.BTJPID;
 import org.firstinspires.ftc.teamcode.util.BTJSystem;
 
 public class Turret implements BTJSystem {
-
-    final double KP = 1;
+    final double KP = 0.08;
     final double KI = 0;
     final double KD = 0;
-
     final double MAX_ANGLE = Math.PI;
-
     final double MIN_ANGLE = -Math.PI;
     final double GEAR_RATIO = 2.75;
     AxonCRServo axonCRServo;
     double targetAngle;
     BTJPID pid;
-
     boolean isStopped;
 
 
@@ -48,6 +44,7 @@ public class Turret implements BTJSystem {
 
     @Override
     public void update() {
+        axonCRServo.update();
         if (!isStopped)
             axonCRServo.setPower(pid.power(targetAngle * GEAR_RATIO - axonCRServo.getTotalAngle()));
     }
