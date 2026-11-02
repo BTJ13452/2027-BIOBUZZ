@@ -27,6 +27,7 @@ public class Turret implements BTJSystem {
         targetAngle = 0;
         pid = new BTJPID(KP, KI, KD);
         isStopped = false;
+        axonCRServo.resetAngle();
     }
 
     public void setAngle(double radians) {
