@@ -28,6 +28,11 @@ public class AxonCRServo extends CRServoImpl {
         }
     }
 
+    public void resetAngle() {
+        rotationCount = 0;
+        lastAngle = getAngle();
+    }
+
     public void update() {
         double currentAngle = getAngle();
         if (lastAngle - currentAngle > ANGLE_WRAP_THRESHOLD)
