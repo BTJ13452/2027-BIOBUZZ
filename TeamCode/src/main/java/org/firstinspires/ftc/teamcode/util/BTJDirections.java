@@ -22,5 +22,7 @@ public class BTJDirections {
     public static final Servo.Direction PISTON_SERVO_RIGHT_DIRECTION = Servo.Direction.FORWARD;
     public static final Servo.Direction PISTON_SERVO_LEFT_DIRECTION = Servo.Direction.FORWARD;
     public static final Servo.Direction SHOOTER_ANGLE_SERVO_DIRECTION = Servo.Direction.FORWARD;
+    public static final Servo.Direction SORTING_SERVO_RIGHT_ARM_DIRECTION = Servo.Direction.FORWARD;
+    public static final Servo.Direction SORTING_SERVO_LEFT_ARM_DIRECTION = Servo.Direction.FORWARD;
     public static final DcMotorSimple.Direction TURRET_SERVO_DIRECTION = DcMotorSimple.Direction.FORWARD;
 }
