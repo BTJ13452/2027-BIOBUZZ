@@ -54,7 +54,7 @@ public class Shooter implements BasicSystem {
 
         servoPistonLeft = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_LEFT_NAME);
         servoPistonRight = hardwareMap.servo.get(BTJConfiguration.PISTON_SERVO_RIGHT_NAME);
-        servoShooterAngle = hardwareMap.servo.get(BTJConfiguration.SHOOTER_ANGLE_SERVO_MANE);
+        servoShooterAngle = hardwareMap.servo.get(BTJConfiguration.SHOOTER_ANGLE_SERVO_NAME);
         servoPistonLeft.setDirection(BTJDirections.PISTON_SERVO_LEFT_DIRECTION);
         servoPistonRight.setDirection(BTJDirections.PISTON_SERVO_RIGHT_DIRECTION);
         servoShooterAngle.setDirection(BTJDirections.SHOOTER_ANGLE_SERVO_DIRECTION);
