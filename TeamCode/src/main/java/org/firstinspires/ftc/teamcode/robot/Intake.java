@@ -64,9 +64,11 @@ public class Intake implements BasicSystem {
 
     public class IntakeFromFlower implements BasicSystem {
         final double FLOWER_SERVO_RIGHT_INTAKE_POSITION = 1;
-        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0.6;
         final double FLOWER_SERVO_LEFT_INTAKE_POSITION = 1;
-        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0.6;
+        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0.65;
+        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0.65;
+        final double FLOWER_SERVO_RIGHT_INIT_POSITION = 0.5;
+        final double FLOWER_SERVO_LEFT_INIT_POSITION = 0.5;
 
 
         AxonServo flowerServoRight;
@@ -77,9 +79,12 @@ public class Intake implements BasicSystem {
             flowerServoLeft = new AxonServo(hardwareMap, BTJConfiguration.FLOWER_INTAKE_SERVO_LEFT_NAME);
             flowerServoRight.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_RIGHT_DIRECTION);
             flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
-            deactivate();
+            moveToInitPosition();
         }
-
+        public void moveToInitPosition () {
+            flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INIT_POSITION);
+            flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_INIT_POSITION);
+        }
         @Override
         public void activate() {
             flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INTAKE_POSITION);

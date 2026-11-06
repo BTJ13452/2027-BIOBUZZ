@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.robot.BTJRobot;
+import org.firstinspires.ftc.teamcode.robot.Intake;
 import org.firstinspires.ftc.teamcode.util.AllianceColor;
 
 @TeleOp
@@ -16,6 +17,13 @@ public class BTJTeleOp extends OpMode {
     @Override
     public void init() {
         robot = new BTJRobot(hardwareMap, START_HEADING, allianceColor);
+    }
+
+    @Override
+    public void start (){
+        robot.intake.intakeFromFlower.deactivate();
+
+
     }
 
     @Override
