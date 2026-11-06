@@ -64,9 +64,9 @@ public class Intake implements BasicSystem {
 
     public class IntakeFromFlower implements BasicSystem {
         final double FLOWER_SERVO_RIGHT_INTAKE_POSITION = 1;
-        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0;
+        final double FLOWER_SERVO_RIGHT_DEFAULT_POSITION = 0.6;
         final double FLOWER_SERVO_LEFT_INTAKE_POSITION = 1;
-        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0;
+        final double FLOWER_SERVO_LEFT_DEFAULT_POSITION = 0.6;
 
 
         AxonServo flowerServoRight;
