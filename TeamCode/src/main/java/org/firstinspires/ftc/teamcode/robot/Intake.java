@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.util.AxonServo;
 import org.firstinspires.ftc.teamcode.util.BTJConfiguration;
@@ -11,7 +10,8 @@ import org.firstinspires.ftc.teamcode.util.BTJDirections;
 import org.firstinspires.ftc.teamcode.util.BasicSystem;
 
 public class Intake implements BasicSystem {
-    final double MOTOR_POWER = 1;
+    final double MOTOR_INTAKE_POWER = 1;
+    final double MOTOR_EJECT_POWER = 1;
 
     DcMotor motorLeft;
     DcMotor motorRight;
@@ -32,8 +32,8 @@ public class Intake implements BasicSystem {
 
     @Override
     public void activate() {
-        motorLeft.setPower(MOTOR_POWER);
-        motorRight.setPower(MOTOR_POWER);
+        motorLeft.setPower(MOTOR_INTAKE_POWER);
+        motorRight.setPower(MOTOR_INTAKE_POWER);
     }
 
     @Override
@@ -42,9 +42,14 @@ public class Intake implements BasicSystem {
         motorRight.setPower(0);
     }
 
+    public void eject() {
+        motorLeft.setPower(MOTOR_EJECT_POWER);
+        motorRight.setPower(MOTOR_EJECT_POWER);
+    }
+
     @Override
     public boolean isActive() {
-        return Math.abs(MOTOR_POWER - motorLeft.getPower()) < 1e-9 || Math.abs(MOTOR_POWER - motorRight.getPower()) < 1e-9;
+        return Math.abs(MOTOR_INTAKE_POWER - motorLeft.getPower()) < 1e-9 || Math.abs(MOTOR_INTAKE_POWER - motorRight.getPower()) < 1e-9;
     }
 
     @Override
@@ -60,7 +65,6 @@ public class Intake implements BasicSystem {
                 "intakeFromFlower: " + "\n" +
                 intakeFromFlower.toString();
     }
-
 
     public class IntakeFromFlower implements BasicSystem {
         final double FLOWER_SERVO_RIGHT_INTAKE_POSITION = 1;
@@ -81,10 +85,12 @@ public class Intake implements BasicSystem {
             flowerServoLeft.setDirection(BTJDirections.FLOWER_INTAKE_SERVO_LEFT_DIRECTION);
             moveToInitPosition();
         }
-        public void moveToInitPosition () {
+
+        public void moveToInitPosition() {
             flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INIT_POSITION);
             flowerServoLeft.setPosition(FLOWER_SERVO_LEFT_INIT_POSITION);
         }
+
         @Override
         public void activate() {
             flowerServoRight.setPosition(FLOWER_SERVO_RIGHT_INTAKE_POSITION);
