@@ -26,10 +26,10 @@ public class Shooter implements BasicSystem {
     final double SHOOTER_MIN_ANGLE = (75.0 / 360) * 2 * Math.PI;
     final double COEFFICIENT = 2000;
     final double EXPONENT = 1;
-     static double KP = 0;
+    static double KP = 0;
     public static double KI = 0;
-     public static double KD = 0;
-     public static double KF = 0;
+    public static double KD = 0;
+    public static double KF = 0;
 
     PIDFCoefficients pidfCoefficients;
 
@@ -73,6 +73,15 @@ public class Shooter implements BasicSystem {
             servoPistonRight.setPosition(RIGHT_PISTON_POSITION_FOR_NECTAR);
         }
     }
+
+    public ScoringElement getShooterSize() {
+        if (servoPistonRight.getPosition() == RIGHT_PISTON_POSITION_FOR_POLLEN)
+            return ScoringElement.POLLEN;
+        else
+            return ScoringElement.NECTAR;
+
+    }
+
 
     public void setAngel(double angle) {
         double position = (((angle - SHOOTER_MIN_ANGLE) / (SHOOTER_MAX_ANGLE - SHOOTER_MIN_ANGLE))
