@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.util.ScoringElement;
 
 public class Shooter implements BasicSystem {
 
-    final double MOTORS_POWER = 1;
+    final double MOTORS_MAX_POWER = 1;
     final double RIGHT_PISTON_POSITION_FOR_POLLEN = 1;
     final double LEFT_PISTON_POSITION_FOR_POLLEN = 1;
     final double RIGHT_PISTON_POSITION_FOR_NECTAR = 0;
@@ -26,10 +26,10 @@ public class Shooter implements BasicSystem {
     final double SHOOTER_MIN_ANGLE = (75.0 / 360) * 2 * Math.PI;
     final double COEFFICIENT = 2000;
     final double EXPONENT = 1;
-    final static double KP = 0;
+     static double KP = 0;
     public static double KI = 0;
-    final static double KD = 0;
-    final static double KF = 0;
+     public static double KD = 0;
+     public static double KF = 0;
 
     PIDFCoefficients pidfCoefficients;
 
@@ -95,8 +95,8 @@ public class Shooter implements BasicSystem {
 
     @Override
     public void activate() {
-        shooterMotor1.setPower(MOTORS_POWER);
-        shooterMotor2.setPower(MOTORS_POWER);
+        shooterMotor1.setPower(MOTORS_MAX_POWER);
+        shooterMotor2.setPower(MOTORS_MAX_POWER);
     }
 
 
