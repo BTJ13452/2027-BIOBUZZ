@@ -64,7 +64,7 @@ public class Shooter implements BasicSystem {
 //        shooterToFlower = new ShooterToFlower(hardwareMap);
     }
 
-    public void setShooterSize(ScoringElement scoringElement) {
+    public void setOpeningSize(ScoringElement scoringElement) {
         if (scoringElement == ScoringElement.POLLEN) {
             servoPistonLeft.setPosition(LEFT_PISTON_POSITION_FOR_POLLEN);
             servoPistonRight.setPosition(RIGHT_PISTON_POSITION_FOR_POLLEN);
@@ -74,7 +74,7 @@ public class Shooter implements BasicSystem {
         }
     }
 
-    public ScoringElement getShooterSize() {
+    public ScoringElement getOpeningSize() {
         if (servoPistonRight.getPosition() == RIGHT_PISTON_POSITION_FOR_POLLEN)
             return ScoringElement.POLLEN;
         else
