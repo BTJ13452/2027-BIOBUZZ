@@ -10,9 +10,29 @@ import org.firstinspires.ftc.teamcode.util.AllianceColor;
 @TeleOp
 public class BTJTeleOp extends OpMode {
     final int START_HEADING = 0;
-    BTJRobot robot;
+    final double TIME_FOR_LONG_PRESS = 0.5;
 
+    BTJRobot robot;
     AllianceColor allianceColor = AllianceColor.RED;
+
+    Thread xLongPress = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            double startTime = time;
+            while (time - startTime < TIME_FOR_LONG_PRESS) {
+                if (gamepad1.xWasReleased()) {
+                    if (robot.intake.isActive())
+                        robot.intake.deactivate();
+                    else
+                        robot.intake.activate();
+                    break;
+                }
+            }
+            if (!gamepad1.xWasReleased()) {
+                robot.intake.eject();
+            }
+        }
+    });
 
     @Override
     public void init() {
@@ -20,7 +40,7 @@ public class BTJTeleOp extends OpMode {
     }
 
     @Override
-    public void start (){
+    public void start() {
         robot.intake.intakeFromFlower.deactivate();
 
 
@@ -45,13 +65,22 @@ public class BTJTeleOp extends OpMode {
                 robot.intake.activate();
         }
 
+        if (gamepad1.xWasPressed()) {
+            xLongPress.start();
+        }
+
         if (gamepad1.bWasPressed()) {
             if (robot.intake.intakeFromFlower.isActive())
                 robot.intake.intakeFromFlower.deactivate();
             else
                 robot.intake.intakeFromFlower.activate();
         }
+    }
 
-
+    @Override
+    public void stop() {
+        if (xLongPress.isAlive()) {
+            xLongPress.interrupt();
+        }
     }
 }
