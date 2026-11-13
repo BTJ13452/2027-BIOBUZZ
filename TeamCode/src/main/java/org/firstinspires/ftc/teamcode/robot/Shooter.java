@@ -140,6 +140,8 @@ public class Shooter implements BasicSystem {
         return "Shooter motor power: " + shooterMotor1.getPower() + "\n" +
                 "Shooter motor2 power: " + shooterMotor2.getPower() + "\n" +
                 "PIDF Coefficients: " + pidfCoefficients.toString() + "\n" +
+                "Angle: " + getAngle() + "\n" +
+                "Opening size: " + getOpeningSize() + "\n" +
                 "Shooter to flower: " + "\n" +
                 shooterToFlower.toString();
     }
