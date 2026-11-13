@@ -91,6 +91,15 @@ public class Shooter implements BasicSystem {
         servoShooterAngle.setPosition(position);
     }
 
+    public double getAngle() {
+        double position = servoShooterAngle.getPosition();
+        double angle = (((position - SHOOTER_ANGLE_SERVO_MIN_POSITION) / (SHOOTER_MAX_ANGLE - SHOOTER_MIN_ANGLE))
+                * (SHOOTER_ANGLE_SERVO_MAX_POSITION - SHOOTER_ANGLE_SERVO_MIN_POSITION))
+                + SHOOTER_MIN_ANGLE;
+        return angle;
+    }
+
+
     public void runByPidf() {
         shooterMotor1.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
         shooterMotor2.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
