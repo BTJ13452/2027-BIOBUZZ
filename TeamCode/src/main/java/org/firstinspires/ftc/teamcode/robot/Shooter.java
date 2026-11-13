@@ -83,7 +83,7 @@ public class Shooter implements BasicSystem {
     }
 
 
-    public void setAngel(double angle) {
+    public void setAngle(double angle) {
         double position = (((angle - SHOOTER_MIN_ANGLE) / (SHOOTER_MAX_ANGLE - SHOOTER_MIN_ANGLE))
                 * (SHOOTER_ANGLE_SERVO_MAX_POSITION - SHOOTER_ANGLE_SERVO_MIN_POSITION))
                 + SHOOTER_ANGLE_SERVO_MIN_POSITION;
